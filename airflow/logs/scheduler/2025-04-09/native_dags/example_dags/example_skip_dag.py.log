@@ -1,0 +1,348 @@
+[2025-04-09T10:16:00.280-0400] {processor.py:157} INFO - Started process (PID=28738) to work on /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:16:00.282-0400] {processor.py:829} INFO - Processing file /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py for tasks to queue
+[2025-04-09T10:16:00.283-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.283-0400] {dagbag.py:539} INFO - Filling up the DagBag from /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:16:00.291-0400] {processor.py:839} INFO - DAG(s) dict_keys(['example_skip_dag']) retrieved from /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:16:00.516-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.516-0400] {configuration.py:1212} ERROR - No module named 'airflow.providers.fab'
+[2025-04-09T10:16:00.517-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.517-0400] {dagbag.py:647} ERROR - Failed to write serialized DAG: /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/configuration.py", line 1210, in getimport
+    return import_string(full_qualified_path)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/module_loading.py", line 37, in import_string
+    module = import_module(module_path)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'airflow.providers.fab'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 642, in _serialize_dag_capturing_errors
+    DagBag._sync_perm_for_dag(dag, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 693, in _sync_perm_for_dag
+    from airflow.www.security import ApplessAirflowSecurityManager
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/www/security.py", line 64, in <module>
+    SecurityManagerOverride = get_auth_manager().get_security_manager_override_class()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/www/extensions/init_auth_manager.py", line 36, in get_auth_manager
+    auth_manager_cls = conf.getimport(section="core", key="auth_manager")
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/configuration.py", line 1213, in getimport
+    raise AirflowConfigException(
+airflow.exceptions.AirflowConfigException: The object could not be loaded. Please check "auth_manager" key in "core" section. Current value: "airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager".
+[2025-04-09T10:16:00.518-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.517-0400] {dag.py:2907} INFO - Sync 1 DAGs
+[2025-04-09T10:16:00.522-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.522-0400] {dag.py:2929} INFO - Creating ORM DAG for example_skip_dag
+[2025-04-09T10:16:00.524-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.524-0400] {dag.py:3677} INFO - Setting next_dagrun for example_skip_dag to 2025-04-08T14:16:00.524840+00:00, run_after=2025-04-09T14:16:00.524840+00:00
+[2025-04-09T10:16:00.778-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.777-0400] {dagbag.py:647} ERROR - Failed to write serialized DAG: /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 636, in _serialize_dag_capturing_errors
+    dag_was_updated = SerializedDagModel.write_dag(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/serialized_dag.py", line 147, in write_dag
+    if session.scalar(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1747, in scalar
+    return self.execute(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 724, in _connection_for_bind
+    self._assert_active()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 604, in _assert_active
+    raise sa_exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) NOT NULL constraint failed: dag.max_consecutive_failed_dag_runs
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, processor_subdir, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('example_skip_dag', None, 1, 0, 1, '2025-04-09 14:16:00.524801', None, None, None, None, '/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py', '/Users/sarahrmclaughlin/Documents/repos/ml_ops/airflow/dags', 'airflow', None, 'grid', '{"type": "timedelta", "attrs": {"days": 1, "seconds": 0, "microseconds": 0}}', '', 16, 16, 0, 0, '2025-04-08 14:16:00.524840', '2025-04-08 14:16:00.524840', '2025-04-09 14:16:00.524840', '2025-04-09 14:16:00.524840')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2025-04-09T10:16:00.778-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:16:00.778-0400] {dag.py:2907} INFO - Sync 1 DAGs
+[2025-04-09T10:16:00.779-0400] {processor.py:182} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 178, in _run_file_processor
+    _handle_dag_file_processing()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 159, in _handle_dag_file_processing
+    result: tuple[int, int] = dag_file_processor.process_file(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 857, in process_file
+    serialize_errors = DagFileProcessor.save_dag_to_db(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/api_internal/internal_api_call.py", line 112, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 893, in save_dag_to_db
+    import_errors = DagBag._sync_to_db(dags=dags, processor_subdir=dag_directory, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 657, in _sync_to_db
+    for attempt in run_with_db_retries(logger=log):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/tenacity/__init__.py", line 347, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 671, in _sync_to_db
+    DAG.bulk_write_to_db(dags.values(), processor_subdir=processor_subdir, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dag.py", line 2919, in bulk_write_to_db
+    orm_dags: list[DagModel] = session.scalars(query).unique().all()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1778, in scalars
+    return self.execute(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 724, in _connection_for_bind
+    self._assert_active()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 604, in _assert_active
+    raise sa_exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) NOT NULL constraint failed: dag.max_consecutive_failed_dag_runs
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, processor_subdir, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('example_skip_dag', None, 1, 0, 1, '2025-04-09 14:16:00.524801', None, None, None, None, '/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py', '/Users/sarahrmclaughlin/Documents/repos/ml_ops/airflow/dags', 'airflow', None, 'grid', '{"type": "timedelta", "attrs": {"days": 1, "seconds": 0, "microseconds": 0}}', '', 16, 16, 0, 0, '2025-04-08 14:16:00.524840', '2025-04-08 14:16:00.524840', '2025-04-09 14:16:00.524840', '2025-04-09 14:16:00.524840')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2025-04-09T10:17:27.032-0400] {processor.py:157} INFO - Started process (PID=29056) to work on /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:17:27.036-0400] {processor.py:829} INFO - Processing file /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py for tasks to queue
+[2025-04-09T10:17:27.036-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.036-0400] {dagbag.py:539} INFO - Filling up the DagBag from /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:17:27.043-0400] {processor.py:839} INFO - DAG(s) dict_keys(['example_skip_dag']) retrieved from /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:17:27.245-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.245-0400] {configuration.py:1212} ERROR - No module named 'airflow.providers.fab'
+[2025-04-09T10:17:27.246-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.245-0400] {dagbag.py:647} ERROR - Failed to write serialized DAG: /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/configuration.py", line 1210, in getimport
+    return import_string(full_qualified_path)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/module_loading.py", line 37, in import_string
+    module = import_module(module_path)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'airflow.providers.fab'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 642, in _serialize_dag_capturing_errors
+    DagBag._sync_perm_for_dag(dag, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 693, in _sync_perm_for_dag
+    from airflow.www.security import ApplessAirflowSecurityManager
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/www/security.py", line 64, in <module>
+    SecurityManagerOverride = get_auth_manager().get_security_manager_override_class()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/www/extensions/init_auth_manager.py", line 36, in get_auth_manager
+    auth_manager_cls = conf.getimport(section="core", key="auth_manager")
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/configuration.py", line 1213, in getimport
+    raise AirflowConfigException(
+airflow.exceptions.AirflowConfigException: The object could not be loaded. Please check "auth_manager" key in "core" section. Current value: "airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager".
+[2025-04-09T10:17:27.246-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.246-0400] {dag.py:2907} INFO - Sync 1 DAGs
+[2025-04-09T10:17:27.250-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.250-0400] {dag.py:2929} INFO - Creating ORM DAG for example_skip_dag
+[2025-04-09T10:17:27.253-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.253-0400] {dag.py:3677} INFO - Setting next_dagrun for example_skip_dag to 2025-04-08T14:17:27.253016+00:00, run_after=2025-04-09T14:17:27.253016+00:00
+[2025-04-09T10:17:27.580-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.579-0400] {dagbag.py:647} ERROR - Failed to write serialized DAG: /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 636, in _serialize_dag_capturing_errors
+    dag_was_updated = SerializedDagModel.write_dag(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/serialized_dag.py", line 147, in write_dag
+    if session.scalar(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1747, in scalar
+    return self.execute(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 724, in _connection_for_bind
+    self._assert_active()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 604, in _assert_active
+    raise sa_exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) NOT NULL constraint failed: dag.max_consecutive_failed_dag_runs
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, processor_subdir, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('example_skip_dag', None, 1, 0, 1, '2025-04-09 14:17:27.252982', None, None, None, None, '/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py', '/Users/sarahrmclaughlin/Documents/repos/ml_ops/airflow/dags', 'airflow', None, 'grid', '{"type": "timedelta", "attrs": {"days": 1, "seconds": 0, "microseconds": 0}}', '', 16, 16, 0, 0, '2025-04-08 14:17:27.253016', '2025-04-08 14:17:27.253016', '2025-04-09 14:17:27.253016', '2025-04-09 14:17:27.253016')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2025-04-09T10:17:27.580-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:17:27.580-0400] {dag.py:2907} INFO - Sync 1 DAGs
+[2025-04-09T10:17:27.581-0400] {processor.py:182} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 178, in _run_file_processor
+    _handle_dag_file_processing()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 159, in _handle_dag_file_processing
+    result: tuple[int, int] = dag_file_processor.process_file(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 857, in process_file
+    serialize_errors = DagFileProcessor.save_dag_to_db(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/api_internal/internal_api_call.py", line 112, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 893, in save_dag_to_db
+    import_errors = DagBag._sync_to_db(dags=dags, processor_subdir=dag_directory, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 657, in _sync_to_db
+    for attempt in run_with_db_retries(logger=log):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/tenacity/__init__.py", line 347, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 671, in _sync_to_db
+    DAG.bulk_write_to_db(dags.values(), processor_subdir=processor_subdir, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dag.py", line 2919, in bulk_write_to_db
+    orm_dags: list[DagModel] = session.scalars(query).unique().all()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1778, in scalars
+    return self.execute(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 724, in _connection_for_bind
+    self._assert_active()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 604, in _assert_active
+    raise sa_exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) NOT NULL constraint failed: dag.max_consecutive_failed_dag_runs
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, processor_subdir, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('example_skip_dag', None, 1, 0, 1, '2025-04-09 14:17:27.252982', None, None, None, None, '/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py', '/Users/sarahrmclaughlin/Documents/repos/ml_ops/airflow/dags', 'airflow', None, 'grid', '{"type": "timedelta", "attrs": {"days": 1, "seconds": 0, "microseconds": 0}}', '', 16, 16, 0, 0, '2025-04-08 14:17:27.253016', '2025-04-08 14:17:27.253016', '2025-04-09 14:17:27.253016', '2025-04-09 14:17:27.253016')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2025-04-09T10:19:17.060-0400] {processor.py:157} INFO - Started process (PID=29330) to work on /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:19:17.063-0400] {processor.py:829} INFO - Processing file /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py for tasks to queue
+[2025-04-09T10:19:17.064-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.064-0400] {dagbag.py:539} INFO - Filling up the DagBag from /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:19:17.071-0400] {processor.py:839} INFO - DAG(s) dict_keys(['example_skip_dag']) retrieved from /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+[2025-04-09T10:19:17.288-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.287-0400] {configuration.py:1212} ERROR - No module named 'airflow.providers.fab'
+[2025-04-09T10:19:17.288-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.288-0400] {dagbag.py:647} ERROR - Failed to write serialized DAG: /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/configuration.py", line 1210, in getimport
+    return import_string(full_qualified_path)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/module_loading.py", line 37, in import_string
+    module = import_module(module_path)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'airflow.providers.fab'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 642, in _serialize_dag_capturing_errors
+    DagBag._sync_perm_for_dag(dag, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 693, in _sync_perm_for_dag
+    from airflow.www.security import ApplessAirflowSecurityManager
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/www/security.py", line 64, in <module>
+    SecurityManagerOverride = get_auth_manager().get_security_manager_override_class()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/www/extensions/init_auth_manager.py", line 36, in get_auth_manager
+    auth_manager_cls = conf.getimport(section="core", key="auth_manager")
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/configuration.py", line 1213, in getimport
+    raise AirflowConfigException(
+airflow.exceptions.AirflowConfigException: The object could not be loaded. Please check "auth_manager" key in "core" section. Current value: "airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager".
+[2025-04-09T10:19:17.289-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.289-0400] {dag.py:2907} INFO - Sync 1 DAGs
+[2025-04-09T10:19:17.293-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.292-0400] {dag.py:2929} INFO - Creating ORM DAG for example_skip_dag
+[2025-04-09T10:19:17.295-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.295-0400] {dag.py:3677} INFO - Setting next_dagrun for example_skip_dag to 2025-04-08T14:19:17.295772+00:00, run_after=2025-04-09T14:19:17.295772+00:00
+[2025-04-09T10:19:17.441-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.440-0400] {dagbag.py:647} ERROR - Failed to write serialized DAG: /Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 636, in _serialize_dag_capturing_errors
+    dag_was_updated = SerializedDagModel.write_dag(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/serialized_dag.py", line 147, in write_dag
+    if session.scalar(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1747, in scalar
+    return self.execute(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 724, in _connection_for_bind
+    self._assert_active()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 604, in _assert_active
+    raise sa_exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) NOT NULL constraint failed: dag.max_consecutive_failed_dag_runs
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, processor_subdir, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('example_skip_dag', None, 1, 0, 1, '2025-04-09 14:19:17.295737', None, None, None, None, '/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py', '/Users/sarahrmclaughlin/Documents/repos/ml_ops/airflow/dags', 'airflow', None, 'grid', '{"type": "timedelta", "attrs": {"days": 1, "seconds": 0, "microseconds": 0}}', '', 16, 16, 0, 0, '2025-04-08 14:19:17.295772', '2025-04-08 14:19:17.295772', '2025-04-09 14:19:17.295772', '2025-04-09 14:19:17.295772')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2025-04-09T10:19:17.441-0400] {logging_mixin.py:151} INFO - [2025-04-09T10:19:17.441-0400] {dag.py:2907} INFO - Sync 1 DAGs
+[2025-04-09T10:19:17.442-0400] {processor.py:182} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 178, in _run_file_processor
+    _handle_dag_file_processing()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 159, in _handle_dag_file_processing
+    result: tuple[int, int] = dag_file_processor.process_file(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 857, in process_file
+    serialize_errors = DagFileProcessor.save_dag_to_db(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/api_internal/internal_api_call.py", line 112, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/dag_processing/processor.py", line 893, in save_dag_to_db
+    import_errors = DagBag._sync_to_db(dags=dags, processor_subdir=dag_directory, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 657, in _sync_to_db
+    for attempt in run_with_db_retries(logger=log):
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/tenacity/__init__.py", line 347, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.17/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dagbag.py", line 671, in _sync_to_db
+    DAG.bulk_write_to_db(dags.values(), processor_subdir=processor_subdir, session=session)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/utils/session.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/models/dag.py", line 2919, in bulk_write_to_db
+    orm_dags: list[DagModel] = session.scalars(query).unique().all()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1778, in scalars
+    return self.execute(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 724, in _connection_for_bind
+    self._assert_active()
+  File "/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 604, in _assert_active
+    raise sa_exc.PendingRollbackError(
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) NOT NULL constraint failed: dag.max_consecutive_failed_dag_runs
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, processor_subdir, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('example_skip_dag', None, 1, 0, 1, '2025-04-09 14:19:17.295737', None, None, None, None, '/Users/sarahrmclaughlin/Documents/repos/ml_ops/venv/lib/python3.10/site-packages/airflow/example_dags/example_skip_dag.py', '/Users/sarahrmclaughlin/Documents/repos/ml_ops/airflow/dags', 'airflow', None, 'grid', '{"type": "timedelta", "attrs": {"days": 1, "seconds": 0, "microseconds": 0}}', '', 16, 16, 0, 0, '2025-04-08 14:19:17.295772', '2025-04-08 14:19:17.295772', '2025-04-09 14:19:17.295772', '2025-04-09 14:19:17.295772')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
