@@ -10,3 +10,8 @@ __pycache__/
 # Ignore virtual environments
 venv/
 venv/
+
+logs/
+logs
+*.db
+
