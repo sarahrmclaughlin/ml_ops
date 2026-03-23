@@ -4,27 +4,6 @@
 
 ##### **ML Ops Watermarking project**
 - Using watermarking to monitor upstream changes that would affect model
-
- ┌─────────────────────────────────┬──────────────────────────────────────────────────────────┐
-  │              File               │                          Status                          │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
-  │ docker-compose.yaml             │ Added ./data and ./src volume mounts                     │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
-  │ src/watermark_manager.py        │ Watermark state tracking with JSON persistence           │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
-  │ src/event_generator.py          │ Generates ndjson event batches (normal + late injection) │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
-  │ src/stream_processor.py         │ Routes events ON-TIME vs LATE, logs formatted output     │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
-  │ dags/watermark_demo_dag.py      │ 3-task Airflow DAG wiring it all together                │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
-  │ tests/test_watermark_manager.py │ 16 tests covering boundary, persistence, state           │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
-  │ tests/test_event_generator.py   │ 13 tests covering batches, late events, file output      │
-  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤                                           
-  │ tests/test_stream_processor.py  │ 10 tests including full end-to-end two-run scenario      │
-  └─────────────────────────────────┴──────────────────────────────────────────────────────────┘   
-
 - This is a demonstration of watermarking in stream data processing (similar to Flink/Spark), where events are classified as "on-time" or "late" based on a watermark threshold.
 
 Breakdown of the Steps:
@@ -56,6 +35,26 @@ This shows how watermarking detects and isolates late-arriving data that could s
 - Events with event_time >= watermark → Processed as on-time.
 - Events with event_time < watermark → Marked as late and quarantined (not used - for real-time processing).
 - This prevents issues like late data affecting model accuracy in streaming ML pipelines.                                        
-                                         
+
+
+ ┌─────────────────────────────────┬──────────────────────────────────────────────────────────┐
+  │              File               │                          Status                          │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ docker-compose.yaml             │ Added ./data and ./src volume mounts                     │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ src/watermark_manager.py        │ Watermark state tracking with JSON persistence           │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ src/event_generator.py          │ Generates ndjson event batches (normal + late injection) │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ src/stream_processor.py         │ Routes events ON-TIME vs LATE, logs formatted output     │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ dags/watermark_demo_dag.py      │ 3-task Airflow DAG wiring it all together                │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ tests/test_watermark_manager.py │ 16 tests covering boundary, persistence, state           │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤
+  │ tests/test_event_generator.py   │ 13 tests covering batches, late events, file output      │
+  ├─────────────────────────────────┼──────────────────────────────────────────────────────────┤                                           
+  │ tests/test_stream_processor.py  │ 10 tests including full end-to-end two-run scenario      │
+  └─────────────────────────────────┴──────────────────────────────────────────────────────────┘   
 
 
