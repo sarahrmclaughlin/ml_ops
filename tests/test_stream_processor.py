@@ -38,7 +38,11 @@ class TestProcessFile:
     def test_all_on_time_when_no_prior_watermark(self, processor, tmp_path):
         events = [
             {"event_id": "e1", "event_time": T0.isoformat(), "feature1": 100},
-            {"event_id": "e2", "event_time": (T0 + timedelta(seconds=5)).isoformat(), "feature1": 101},
+            {
+                "event_id": "e2",
+                "event_time": (T0 + timedelta(seconds=5)).isoformat(),
+                "feature1": 101,
+            },
         ]
         path = write_ndjson(tmp_path / "raw_events" / "batch.ndjson", events)
         report = processor.process_file(path)
@@ -54,8 +58,16 @@ class TestProcessFile:
 
         late_time = T0 - timedelta(seconds=60)
         events = [
-            {"event_id": "e_good", "event_time": (T0 + timedelta(seconds=50)).isoformat(), "feature1": 99},
-            {"event_id": "e_bad", "event_time": late_time.isoformat(), "feature1": 10000},
+            {
+                "event_id": "e_good",
+                "event_time": (T0 + timedelta(seconds=50)).isoformat(),
+                "feature1": 99,
+            },
+            {
+                "event_id": "e_bad",
+                "event_time": late_time.isoformat(),
+                "feature1": 10000,
+            },
         ]
         path = write_ndjson(tmp_path / "raw_events" / "batch2.ndjson", events)
         report = processor.process_file(path)
@@ -73,7 +85,11 @@ class TestProcessFile:
     def test_final_watermark_is_set(self, processor, tmp_path):
         events = [
             {"event_id": "e1", "event_time": T0.isoformat(), "feature1": 100},
-            {"event_id": "e2", "event_time": (T0 + timedelta(seconds=45)).isoformat(), "feature1": 102},
+            {
+                "event_id": "e2",
+                "event_time": (T0 + timedelta(seconds=45)).isoformat(),
+                "feature1": 102,
+            },
         ]
         path = write_ndjson(tmp_path / "raw_events" / "batch3.ndjson", events)
         report = processor.process_file(path)
@@ -111,13 +127,17 @@ class TestWriteOnTime:
 
 class TestWriteQuarantine:
     def test_creates_quarantine_file(self, processor, tmp_path):
-        events = [{"event_id": "e_bad", "event_time": T0.isoformat(), "feature1": 10000}]
+        events = [
+            {"event_id": "e_bad", "event_time": T0.isoformat(), "feature1": 10000}
+        ]
         path = processor.write_quarantine(events, run_id="run_001")
         assert path.exists()
         assert "quarantine" in path.name
 
     def test_quarantine_file_is_valid_ndjson(self, processor, tmp_path):
-        events = [{"event_id": "e_bad", "event_time": T0.isoformat(), "feature1": 10000}]
+        events = [
+            {"event_id": "e_bad", "event_time": T0.isoformat(), "feature1": 10000}
+        ]
         path = processor.write_quarantine(events, run_id="run_003")
         obj = json.loads(path.read_text().strip())
         assert obj["feature1"] == 10000
@@ -135,7 +155,11 @@ class TestEndToEndScenario:
         proc1 = StreamProcessor(watermark_manager=wm1, data_dir=tmp_path)
 
         run1_events = [
-            {"event_id": f"e{i}", "event_time": (T0 + timedelta(seconds=i * 5)).isoformat(), "feature1": 100}
+            {
+                "event_id": f"e{i}",
+                "event_time": (T0 + timedelta(seconds=i * 5)).isoformat(),
+                "feature1": 100,
+            }
             for i in range(10)
         ]
         run1_path = write_ndjson(tmp_path / "raw_events" / "run1.ndjson", run1_events)
@@ -156,10 +180,26 @@ class TestEndToEndScenario:
 
         # Watermark boundary at T0+15s; late event is at T0-60s (75s behind)
         run2_events = [
-            {"event_id": "e_ok1", "event_time": (T0 + timedelta(seconds=50)).isoformat(), "feature1": 99},
-            {"event_id": "e_ok2", "event_time": (T0 + timedelta(seconds=55)).isoformat(), "feature1": 98},
-            {"event_id": "e_ok3", "event_time": (T0 + timedelta(seconds=60)).isoformat(), "feature1": 102},
-            {"event_id": "e_bad", "event_time": (T0 - timedelta(seconds=60)).isoformat(), "feature1": 10000},
+            {
+                "event_id": "e_ok1",
+                "event_time": (T0 + timedelta(seconds=50)).isoformat(),
+                "feature1": 99,
+            },
+            {
+                "event_id": "e_ok2",
+                "event_time": (T0 + timedelta(seconds=55)).isoformat(),
+                "feature1": 98,
+            },
+            {
+                "event_id": "e_ok3",
+                "event_time": (T0 + timedelta(seconds=60)).isoformat(),
+                "feature1": 102,
+            },
+            {
+                "event_id": "e_bad",
+                "event_time": (T0 - timedelta(seconds=60)).isoformat(),
+                "feature1": 10000,
+            },
         ]
         run2_path = write_ndjson(tmp_path / "raw_events" / "run2.ndjson", run2_events)
         report2 = proc2.process_file(run2_path)

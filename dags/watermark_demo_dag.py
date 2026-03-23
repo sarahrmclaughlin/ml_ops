@@ -14,6 +14,7 @@ Watermark concept:
 """
 
 import sys
+
 sys.path.insert(0, "/opt/airflow/src")
 
 import json
@@ -60,11 +61,15 @@ with DAG(
 
         if run_mode == "normal":
             log.info("Run mode: NORMAL — generating 10 events")
-            events = gen.generate_normal_batch(count=10, base_time=base_time, interval_seconds=5)
+            events = gen.generate_normal_batch(
+                count=10, base_time=base_time, interval_seconds=5
+            )
 
         elif run_mode == "inject_late":
             log.info("Run mode: INJECT_LATE — generating 3 normal + 1 late event")
-            events = gen.generate_normal_batch(count=3, base_time=base_time, interval_seconds=5)
+            events = gen.generate_normal_batch(
+                count=3, base_time=base_time, interval_seconds=5
+            )
 
             # Determine current max event time from the normal batch
             current_max = datetime.fromisoformat(events[-1]["event_time"])
@@ -82,7 +87,9 @@ with DAG(
                 late_event["feature1"],
             )
         else:
-            raise ValueError(f"Unknown run_mode: {run_mode!r}. Use 'normal' or 'inject_late'.")
+            raise ValueError(
+                f"Unknown run_mode: {run_mode!r}. Use 'normal' or 'inject_late'."
+            )
 
         out_path = gen.write_batch(events)
         log.info("Wrote %d events to %s", len(events), out_path)
@@ -102,9 +109,13 @@ with DAG(
         from watermark_manager import WatermarkManager
         from stream_processor import StreamProcessor
 
-        event_file = context["ti"].xcom_pull(key="event_file", task_ids="task_generate_events")
+        event_file = context["ti"].xcom_pull(
+            key="event_file", task_ids="task_generate_events"
+        )
         if not event_file:
-            raise RuntimeError("No event file received from task_generate_events via XCom.")
+            raise RuntimeError(
+                "No event file received from task_generate_events via XCom."
+            )
 
         wm = WatermarkManager(
             watermark_delay_seconds=WATERMARK_DELAY_SECONDS,
@@ -133,7 +144,9 @@ with DAG(
             "total": report.total,
             "on_time_count": len(report.on_time),
             "late_count": len(report.late),
-            "final_watermark": report.final_watermark.isoformat() if report.final_watermark else None,
+            "final_watermark": (
+                report.final_watermark.isoformat() if report.final_watermark else None
+            ),
             "late_events": report.late,
             "on_time_path": str(on_time_path),
             "quarantine_path": str(quarantine_path),

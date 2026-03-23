@@ -36,7 +36,9 @@ class WatermarkManager:
         """Persist max_event_time to the JSON state file."""
         self.state_file.parent.mkdir(parents=True, exist_ok=True)
         payload = {
-            "max_event_time": self.max_event_time.isoformat() if self.max_event_time else None,
+            "max_event_time": (
+                self.max_event_time.isoformat() if self.max_event_time else None
+            ),
             "watermark_delay_seconds": self.watermark_delay_seconds,
         }
         with open(self.state_file, "w") as f:
@@ -52,6 +54,7 @@ class WatermarkManager:
         if self.max_event_time is None:
             return None
         from datetime import timedelta
+
         return self.max_event_time - timedelta(seconds=self.watermark_delay_seconds)
 
     def is_late(self, event_time: datetime) -> bool:
