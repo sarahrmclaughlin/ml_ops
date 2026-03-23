@@ -6,23 +6,23 @@
 - Using watermarking to monitor upstream changes that would affect model
 - This is a demonstration of watermarking in stream data processing (similar to Flink/Spark), where events are classified as "on-time" or "late" based on a watermark threshold.
 
-Breakdown of the Steps:
-Start Airflow: Ensure Docker is running and execute docker compose up -d (already done).
+#### Breakdown of the Steps:
+- Start Airflow: Ensure Docker is running and execute docker compose up -d (already done).
 
-**Trigger DAG in "normal" mode:**
+- **Trigger DAG in "normal" mode:**
 
-Open http://localhost:8080 in your browser.
-Navigate to the DAGs page, find watermark_demo, and click "Trigger DAG".
-In the configuration JSON, set: {"run_mode": "normal"}.
-Result: Generates and processes 10 events, all classified as ON-TIME (no late events, so none are quarantined).
-Check output in processed and watermark state in data/watermarks/watermark_state.json.
+- Open http://localhost:8080 in your browser.
+- Navigate to the DAGs page, find watermark_demo, and click "Trigger DAG".
+- In the configuration JSON, set: {"run_mode": "normal"}.
+- Result: Generates and processes 10 events, all classified as ON-TIME (no late events, so none are quarantined).
+- Check output in processed and watermark state in data/watermarks/watermark_state.json.
 
 
-**Trigger DAG in "inject_late" mode: Trigger the same DAG again, but with: {"run_mode": "inject_late"}.**
-Result: Generates 3 on-time events + 1 deliberately late event (with feature1=10000), which gets quarantined (handled separately as late data).
-This shows how watermarking detects and isolates late-arriving data that could skew ML model predictions.
+- **Trigger DAG in "inject_late" mode: Trigger the same DAG again, but with: {"run_mode": "inject_late"}.**
+- Result: Generates 3 on-time events + 1 deliberately late event (with feature1=10000), which gets quarantined (handled separately as late data).
+- This shows how watermarking detects and isolates late-arriving data that could skew ML model predictions.
 
-*CLI*                                                                                                                      
+#### *CLI*                                                                                                                      
   ```
   - Turn on Docker Desktop and make sure it is running and active
   1. docker compose up -d                
