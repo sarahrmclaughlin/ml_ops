@@ -19,7 +19,9 @@ from watermark_manager import WatermarkManager
 
 log = logging.getLogger("airflow.task")
 
-DATA_DIR = Path(os.environ.get("AIRFLOW_DATA_DIR", Path(__file__).parent.parent / "data"))
+DATA_DIR = Path(
+    os.environ.get("AIRFLOW_DATA_DIR", Path(__file__).parent.parent / "data")
+)
 
 
 @dataclass
@@ -32,7 +34,9 @@ class ProcessingReport:
 
 
 class StreamProcessor:
-    def __init__(self, watermark_manager: WatermarkManager, data_dir: Path | None = None):
+    def __init__(
+        self, watermark_manager: WatermarkManager, data_dir: Path | None = None
+    ):
         self.wm = watermark_manager
         self.data_dir = Path(data_dir) if data_dir else DATA_DIR
 
@@ -97,7 +101,9 @@ class StreamProcessor:
         return out_path
 
     def _log_summary(self, report: ProcessingReport) -> None:
-        wm_str = report.final_watermark.isoformat() if report.final_watermark else "None"
+        wm_str = (
+            report.final_watermark.isoformat() if report.final_watermark else "None"
+        )
         late_detail = ""
         if report.late:
             first_late = report.late[0]
