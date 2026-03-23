@@ -3,15 +3,22 @@ name: CI Pipeline  # Descriptive name
 on:  # Triggers: Run on pushes/PRs to main or feat branches, or changes to key files
   push:
     branches: [main, 'feat/**']
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'dags/**'
+      - 'Makefile'
+      - 'requirements.txt'
+      - 'docker-compose.yaml'
   pull_request:
     branches: [main, 'feat/**']
-  paths:
-    - 'src/**'
-    - 'tests/**'
-    - 'dags/**'
-    - 'Makefile'
-    - 'requirements.txt'
-    - 'docker-compose.yaml'
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'dags/**'
+      - 'Makefile'
+      - 'requirements.txt'
+      - 'docker-compose.yaml'
 
 jobs:
   test-and-lint:  # Job name: Combines testing and linting for efficiency
