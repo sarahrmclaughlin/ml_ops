@@ -10,6 +10,7 @@ on:  # Triggers: Run on pushes/PRs to main or feat branches, or changes to key f
       - 'Makefile'
       - 'requirements.txt'
       - 'docker-compose.yaml'
+      - 'ci.yml'  # Also trigger on changes to this workflow file itself
   pull_request:
     branches: [main, 'feat/**']
     paths:
@@ -31,7 +32,7 @@ jobs:
       - name: Set up Python  # Install Python (matches your venv)
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # Or 3.10/3.11—check your requirements.txt
+          python-version: '3.9' 
 
       - name: Cache pip dependencies  # Speed up installs by caching
         uses: actions/cache@v4
@@ -45,7 +46,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run linting  # If you have a linter in Makefile (e.g., flake8/black)
-        run: make lint  # Calls your Makefile—add if missing
+        run: make pylint  # Calls your Makefile—add if missing
 
       # - name: Run tests  # Execute pytest via Makefile
       #   run: make test  # Assumes 'make test' runs pytest
