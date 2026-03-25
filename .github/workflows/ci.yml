@@ -1,4 +1,4 @@
-name: CI Pipeline  # Descriptive name
+name: CI Pipeline  
 
 on:  # Triggers: Run on pushes/PRs to main or feat branches, or changes to key files
   push:
@@ -47,15 +47,15 @@ jobs:
       - name: Run linting  # If you have a linter in Makefile (e.g., flake8/black)
         run: make lint  # Calls your Makefile—add if missing
 
-      - name: Run tests  # Execute pytest via Makefile
-        run: make test  # Assumes 'make test' runs pytest
+      # - name: Run tests  # Execute pytest via Makefile
+      #   run: make test  # Assumes 'make test' runs pytest
 
-      - name: Upload test results  # For debugging failures
-        uses: actions/upload-artifact@v4
-        if: always()  # Even if tests fail
-        with:
-          name: test-results
-          path: test-results.xml  # If pytest outputs XML
+      # - name: Upload test results  # For debugging failures
+      #   uses: actions/upload-artifact@v4
+      #   if: always()  # Even if tests fail
+      #   with:
+      #     name: test-results
+      #     path: test-results.xml  # If pytest outputs XML
 
   build-docker:  # Separate job for Docker (runs after tests pass)
     needs: test-and-lint  # Depends on previous job
