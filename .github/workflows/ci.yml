@@ -10,7 +10,7 @@ on:  # Triggers: Run on pushes/PRs to main or feat branches, or changes to key f
       - 'Makefile'
       - 'requirements.txt'
       - 'docker-compose.yaml'
-      - 'ci.yml'  # Also trigger on changes to this workflow file itself
+      -  '.github/workflows/ci.yml'  # Add this  # Also trigger on changes to this workflow file itself
   pull_request:
     branches: [main, 'feat/**']
     paths:
@@ -20,6 +20,7 @@ on:  # Triggers: Run on pushes/PRs to main or feat branches, or changes to key f
       - 'Makefile'
       - 'requirements.txt'
       - 'docker-compose.yaml'
+      - '.github/workflows/ci.yml'
 
 jobs:
   test-and-lint:  # Job name: Combines testing and linting for efficiency
