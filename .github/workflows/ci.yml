@@ -47,7 +47,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run linting  # If you have a linter in Makefile (e.g., flake8/black)
-        run: make pylint  # Calls your Makefile—add if missing
+        run: make check-style  # check that code style is correct, don't auto fix
 
       # - name: Run tests  # Execute pytest via Makefile
       #   run: make test  # Assumes 'make test' runs pytest
