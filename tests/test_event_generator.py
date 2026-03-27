@@ -1,10 +1,10 @@
 import json
-import pytest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from event_generator import EventGenerator
+import pytest
 
+from event_generator import EventGenerator
 
 T0 = datetime(2024, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
 

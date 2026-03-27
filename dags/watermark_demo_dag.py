@@ -106,8 +106,8 @@ with DAG(
     # Task 2: Load watermark, process events, route
     # ─────────────────────────────────────────────
     def process_stream(**context):
-        from watermark_manager import WatermarkManager
         from stream_processor import StreamProcessor
+        from watermark_manager import WatermarkManager
 
         event_file = context["ti"].xcom_pull(
             key="event_file", task_ids="task_generate_events"

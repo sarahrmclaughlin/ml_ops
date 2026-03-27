@@ -1,10 +1,10 @@
 import json
-import pytest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from watermark_manager import WatermarkManager
+import pytest
 
+from watermark_manager import WatermarkManager
 
 T0 = datetime(2024, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
 DELAY = 30  # seconds
