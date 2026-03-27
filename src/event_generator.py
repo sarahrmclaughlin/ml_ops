@@ -16,7 +16,6 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-
 DATA_DIR = Path(
     os.environ.get("AIRFLOW_DATA_DIR", Path(__file__).parent.parent / "data")
 )
