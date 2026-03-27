@@ -11,6 +11,7 @@ on:  # Triggers: Run on pushes/PRs to main or feat branches, or changes to key f
       - 'requirements.txt'
       - 'docker-compose.yaml'
       -  '.github/workflows/ci.yml'  # Add this  # Also trigger on changes to this workflow file itself
+      - '.pre-commit-config.yaml'  # Add this  # Trigger on changes to pre-commit config, since it affects linting
   pull_request:
     branches: [main, 'feat/**']
     paths:
@@ -21,6 +22,7 @@ on:  # Triggers: Run on pushes/PRs to main or feat branches, or changes to key f
       - 'requirements.txt'
       - 'docker-compose.yaml'
       - '.github/workflows/ci.yml'
+      - '.pre-commit-config.yaml'
 
 jobs:
   test-and-lint:  # Job name: Combines testing and linting for efficiency
